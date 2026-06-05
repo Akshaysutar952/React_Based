@@ -1,4 +1,47 @@
-/* Global Styles - Applied to entire application */
+/* ============================================================
+   Design System / Global Styles — Modern SaaS
+   ============================================================ */
+
+:root {
+  /* Brand palette */
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-200: #c7d2fe;
+  --brand-400: #818cf8;
+  --brand-500: #6366f1;
+  --brand-600: #4f46e5;
+  --brand-700: #4338ca;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+
+  /* Signature gradients */
+  --gradient-brand: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #d946ef 100%);
+  --gradient-soft: linear-gradient(160deg, #f5f6ff 0%, #faf5ff 55%, #fdf2fb 100%);
+
+  /* Neutrals */
+  --bg: #ffffff;
+  --bg-subtle: #f7f8fd;
+  --surface: #ffffff;
+  --border: #e9eaf2;
+  --text: #1e2235;
+  --text-muted: #5b6178;
+  --text-soft: #8a90a6;
+
+  /* Effects */
+  --shadow-sm: 0 1px 2px rgba(24, 26, 42, 0.04), 0 1px 3px rgba(24, 26, 42, 0.06);
+  --shadow-md: 0 4px 14px rgba(24, 26, 42, 0.06), 0 2px 6px rgba(24, 26, 42, 0.04);
+  --shadow-lg: 0 20px 44px -14px rgba(79, 70, 229, 0.20), 0 8px 24px -10px rgba(24, 26, 42, 0.12);
+  --shadow-glow: 0 12px 30px -8px rgba(99, 102, 241, 0.45);
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  --container: 1180px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 * {
   margin: 0;
@@ -6,79 +49,126 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
-  overflow-x: hidden;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
-/* Container class for consistent width across all pages */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.65;
+  overflow-x: hidden;
 }
 
-/* Section padding */
+h1, h2, h3, h4 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  font-weight: 800;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--brand-500);
+  color: #fff;
+}
+
+/* Container */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Section rhythm */
 section {
-  padding: 80px 0;
+  padding: 110px 0;
 }
 
 @media (max-width: 768px) {
   section {
-    padding: 50px 0;
+    padding: 72px 0;
   }
 }
 
-/* Global button styles */
+/* Section header (shared across Features / Services / Contact) */
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 60px;
+}
+
+.section-header h2 {
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+}
+
+/* ---------- Buttons ---------- */
 .btn {
-  display: inline-block;
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
   font-weight: 600;
-  transition: all 0.3s ease;
+  font-size: 1rem;
   cursor: pointer;
-  border: none;
-  font-size: 16px;
+  border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease),
+    background 0.25s var(--ease), color 0.25s var(--ease),
+    border-color 0.25s var(--ease);
+  white-space: nowrap;
 }
 
 .btn-primary {
-  background: #007bff;
-  color: white;
+  background: var(--gradient-brand);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
 }
 
 .btn-primary:hover {
-  background: #0056b3;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -8px rgba(99, 102, 241, 0.55);
 }
 
 .btn-secondary {
-  background: transparent;
-  color: #007bff;
-  border: 2px solid #007bff;
+  background: #fff;
+  color: var(--brand-600);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary:hover {
-  background: #007bff;
-  color: white;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  border-color: var(--brand-200);
+  box-shadow: var(--shadow-md);
+  color: var(--brand-700);
 }
 
-/* Global animations */
+/* ---------- Animations ---------- */
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -87,18 +177,17 @@ section {
 }
 
 .fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
+  animation: fadeInUp 0.7s var(--ease) both;
 }
 
-/* Utility classes */
-.text-center {
-  text-align: center;
-}
+/* Utilities */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.mb-20 { margin-bottom: 20px; }
 
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-20 {
-  margin-bottom: 20px;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -1,0 +1,11 @@
+/* App shell. Layout primitives, buttons, and tokens are in styles/globals.css. */
+
+.App {
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Push content below the fixed header */
+.App main {
+  display: block;
+}

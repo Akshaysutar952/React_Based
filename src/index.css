@@ -1,0 +1,7 @@
+/* Base layer — design tokens & shared rules live in styles/globals.css.
+   Kept intentionally minimal to avoid overriding the design system. */
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
